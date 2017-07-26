@@ -47,6 +47,7 @@ public class Page2Activity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if(convertView==null){
+                convertView=inflater.inflate()
                 TextView tv=(TextView)(convertView.findViewById(R.id.item2_tv));
                 tv.setText(data[position]);
             }
