@@ -1,11 +1,14 @@
 package tw.com.ei.mylisttest;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class Page2Activity extends AppCompatActivity {
     private ListView list;
@@ -21,6 +24,11 @@ public class Page2Activity extends AppCompatActivity {
         //list.setAdapter(myAdapter);
     }
     public class myAdapter extends BaseAdapter{
+        private LayoutInflater inflater;
+        myAdapter(){
+            inflater=(LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
         @Override
         public int getCount() {
             return data.length;
@@ -38,7 +46,11 @@ public class Page2Activity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            if(convertView==null){
+                TextView tv=(TextView)(convertView.findViewById(R.id.item2_tv));
+                tv.setText(data[position]);
+            }
+            return convertView;
         }
     }
 }
